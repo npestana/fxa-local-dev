@@ -5,7 +5,7 @@ ulimit -S -n 2048 || echo "Setting ulimit failed"
 
 # Clone all the projects
 
-git clone https://github.com/mozilla/fxa-content-server.git &
+git clone https://github.com/npestana/fxa-content-server.git &
 git clone https://github.com/mozilla/fxa-auth-server.git &
 git clone https://github.com/vladikoff/browserid-verifier.git -b http &
 
