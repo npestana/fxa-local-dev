@@ -1,0 +1,51 @@
+{
+  "variables": {
+    "app_slug": "{{ env `ATLAS_APPLICATION_SLUG` }}"
+  },
+  "builders": [
+    {
+      "type": "docker",
+      "image": "ubuntu:14.04.3",
+      "commit": true
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "inline": [
+        "apt-get -y update"
+      ]
+    },
+    {
+      "type": "file",
+      "source": ".",
+      "destination": "/tmp/app"
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "cd /tmp",
+        "tar -zcvf compiled-app.tar.gz app"
+      ]
+    },
+    {
+      "type": "file",
+      "source": "/tmp/compiled-app.tar.gz",
+      "destination": "compiled-app.tar.gz",
+      "direction": "download"
+    }
+  ],
+  "post-processors": [
+    [
+      {
+        "type": "artifice",
+        "files": ["compiled-app.tar.gz"]
+      },
+      {
+        "type": "atlas",
+        "artifact": "{{user `app_slug` }}",
+        "artifact_type": "archive"
+      }
+    ]
+  ]
+}
