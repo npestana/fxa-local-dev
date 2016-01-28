@@ -12,8 +12,8 @@
   "provisioners": [
     {
       "type": "shell",
-      "inline": [
-        "apt-get -y update"
+      "scripts": [
+        "_scripts/packer/dep.sh"
       ]
     },
     {
