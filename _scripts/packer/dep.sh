@@ -4,7 +4,7 @@
 
 apt-get -y update
 
-apt-get -y install curl software-properties-common build-essential git-core libgmp3-dev graphicsmagick redis-server python-virtualenv python-dev
+apt-get -y install curl sudo software-properties-common build-essential git-core libgmp3-dev graphicsmagick redis-server python-virtualenv python-dev
 
 add-apt-repository -y ppa:webupd8team/java
 curl -sL https://deb.nodesource.com/setup_4.x | bash -

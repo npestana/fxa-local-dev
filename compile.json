@@ -24,14 +24,16 @@
     {
       "type": "shell",
       "inline": [
-        "cd /tmp",
-        "cd /tmp",
-        "tar -zcvf compiled-app.tar.gz app"
+        "useradd -m -s /bin/bash vagrant",
+        "chown vagrant:vagrant -R /tmp/app",
+        "cd /tmp/app"
+        "sudo -H -u vagrant bash -c 'npm i'",
+        "tar -zcvf compiled-app.tar.gz ."
       ]
     },
     {
       "type": "file",
-      "source": "/tmp/compiled-app.tar.gz",
+      "source": "/tmp/app/compiled-app.tar.gz",
       "destination": "compiled-app.tar.gz",
       "direction": "download"
     }
