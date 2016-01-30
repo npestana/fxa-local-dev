@@ -27,7 +27,6 @@
         "useradd -m -s /bin/bash vagrant",
         "chown vagrant:vagrant -R /tmp/app",
         "cd /tmp/app",
-        "sudo -H -u vagrant bash -c 'npm i'",
         "tar -zcvf compiled-app.tar.gz ."
       ]
     },
